@@ -1,0 +1,71 @@
+{
+  "name": "ev3devcompile",
+  "displayName": "ev3dev-Compile",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:ev3devcompile.ev3devcompile"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    
+      "configuration": {
+      "title": "_MaMi-Grag Configuration",
+      "properties": {
+        "ev3dev.gradlewPath": {
+          "scope": "resource",
+          "type": "string",
+          "default": "",
+          "description": "chemin vers gradlew (attention le chemin doit commencer a la racine et non au nom d'utilisateur)"
+        },
+        "ev3dev.cppPath": {
+          "scope": "resource",
+          "type": "string",
+          "default": "",
+          "description": "chemin vers le répertoire de travail (attention le chemin doit commencer a la racine et non au nom d'utilisateur)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "ev3devcompile.ev3devcompile",
+        "title": "Compilation pour la brique Ev3"
+      },
+      {
+        "command": "ev3devcompile.ev3devcompilejava",
+        "title": "Compilation pour la brique Ev3 JAVA"
+      },
+      {
+        "command": "ev3devcompile.ev3devcompilecpp",
+        "title": "Compilation pour la brique Ev3 C++"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.73.0",
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3",
+    "@vscode/test-electron": "^2.2.0"
+  }
+}
